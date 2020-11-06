@@ -1,0 +1,3 @@
+{% macro react(id, props) %}
+<div id="rct-{{ id }}" data-props="{{ props | json_encode }}"></div>
+{% endmacro %}
