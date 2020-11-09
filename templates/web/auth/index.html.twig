@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% import 'components/init.html.twig' as init %}
+{% block title %}{% endblock %}
+
+{% block body %}
+    {{ init.react('auth', props) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('auth') }}
+{% endblock %}

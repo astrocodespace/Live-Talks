@@ -19,6 +19,11 @@ class EmployeeZoneController extends AbstractController
      */
     public function index(): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('web_login');
+        }
+
+
         return $this->render('web/employee_zone/index.html.twig', [
             'props' => [],
         ]);

@@ -19,6 +19,10 @@ class ClientZoneController extends AbstractController
      */
     public function index(): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('web_login');
+        }
+
         return $this->render('web/client_zone/index.html.twig', [
             'props' => [],
         ]);

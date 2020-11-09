@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(name="users")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discriminator", type="string")
  * @DiscriminatorMap({"user" = "User", "client" = "Client", "employee" = "Employee"})
@@ -37,6 +38,16 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     protected $password;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $lastName;
 
     public function getId(): ?int
     {
@@ -114,5 +125,37 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName): void
+    {
+        $this->lastName = $lastName;
     }
 }

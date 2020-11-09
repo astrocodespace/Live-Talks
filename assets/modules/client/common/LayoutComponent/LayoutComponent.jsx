@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import colors from "../../theme/colors";
 import {SContent} from "../ContentComponent/ContentComponent.styled";
 import {LinkComponent} from "../SidebarComponent/LinkComponent";
+import {STabBarContainer} from "../TabBarComponent/TabBarComponent.styled";
 
 
 const LayoutComponent = ({children}) => {
@@ -37,6 +38,7 @@ const LayoutComponent = ({children}) => {
                     />
                 </SNav>
             </SSidebarContainer>
+            <STabBarContainer/>
             <SContent>
                 {children}
             </SContent>

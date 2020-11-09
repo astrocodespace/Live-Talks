@@ -6,7 +6,7 @@ export const SCardContainer = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin-top: 50px;
+        margin: 50px 20px 0 0;
         transition: all .3s;
         
         &:hover {

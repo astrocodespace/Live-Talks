@@ -47,4 +47,9 @@ class ClientRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function save(Client $client)
+    {
+        $this->_em->persist($client);
+        $this->_em->flush($client);
+    }
 }

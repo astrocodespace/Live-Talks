@@ -18,6 +18,21 @@ security:
             anonymous: true
             lazy: true
             provider: app_user_provider
+            json_login:
+                check_path: api_login
+                username_path: email
+                password_path: password
+                failure_handler: security.auth_failure_handler
+                remember_me: true
+            stateless: false
+            guard:
+                authenticators:
+                    - App\Security\AppAuthenticator
+                entry_point: App\Security\AppAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
