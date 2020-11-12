@@ -8,6 +8,7 @@ export const SCardContainer = styled.div`
         align-items: center;
         margin: 50px 20px 0 0;
         transition: all .3s;
+        padding: 10px;
         
         &:hover {
             box-shadow: 18px 20px 53px -21px rgba(0,0,0,0.3);

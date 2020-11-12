@@ -5,6 +5,7 @@ import ServiceCardComponent from "../components/ServiceCardComponent/ServiceCard
 import {useDispatch, useSelector} from "react-redux";
 import ContentLoader from "react-content-loader";
 import {selectService} from "../../../state/services/servicesActions";
+import {LoaderComponent} from "../../../../../common/components/LoaderComponent";
 
 export const ServicesListingContainer = () => {
     const dispatch = useDispatch();
@@ -19,6 +20,12 @@ export const ServicesListingContainer = () => {
             <SectionTitleComponent>
                 List of services
             </SectionTitleComponent>
+
+            {
+                loading &&
+                <LoaderComponent/>
+            }
+
             <SListingWrapper>
                 {
                     items &&
