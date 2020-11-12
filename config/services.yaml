@@ -18,14 +18,15 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
+            - '../src/Domain/'
             - '../src/Kernel.php'
             - '../src/Tests/'
+            - '../src/Ui/Controller/Api/PaginatedData.php'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    App\Controller\:
-        resource: '../src/Controller/'
+    App\Ui\Controller\:
+        resource: '../src/Ui/Controller/'
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
@@ -33,13 +34,13 @@ services:
 
     # AUTH
     security.auth_failure_handler:
-        class:      App\Security\AuthenticationFailureHandler
+        class:      App\Infrastructure\Security\AuthenticationFailureHandler
         public:     false
         arguments:  ['@router','@session']
 
     # Event Listeners
-    App\EventListener\:
-        resource: ../src/EventListener/*
+    App\Infrastructure\EventListener\:
+        resource: ../src/Infrastructure/EventListener/*
         tags:
             - { name: kernel.event_listener }
 

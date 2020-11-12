@@ -8,11 +8,11 @@ import {selectService} from "../../../state/services/servicesActions";
 
 export const ServicesListingContainer = () => {
     const dispatch = useDispatch();
-    const {data, loading, current} = useSelector(state => state.services)
+    const {items, loading, current} = useSelector(state => state.services)
 
     useEffect(() => {
-        console.log(current);
-    }, [data, loading, current])
+        console.log(loading);
+    }, [items, loading, current])
 
     return (
         <SServicesListingContainer>
@@ -21,9 +21,9 @@ export const ServicesListingContainer = () => {
             </SectionTitleComponent>
             <SListingWrapper>
                 {
-                    data &&
+                    items &&
                     !loading &&
-                    data.map((service, key) => {
+                    items.map((service, key) => {
 
                         return (
                             <ServiceCardComponent

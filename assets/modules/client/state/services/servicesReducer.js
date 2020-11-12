@@ -5,8 +5,11 @@ import React from "react";
 
 const initialState = {
     loading: true,
-    data: [],
-    current: null
+    items: [],
+    current: null,
+    currentPage: 1,
+    totalItems: 0,
+    itemsPerPage: 0
 }
 
 const data = [
@@ -37,10 +40,20 @@ const data = [
 ];
 
 export default createReducer(initialState, {
-    [fetchServices.type]: (state, action) => {
+    [fetchServices.pending]: (state, action) => {
         return {
             ...state,
-            data,
+            loading: true
+        }
+    },
+    [fetchServices.fulfilled]: (state, action) => {
+        return {
+            ...state,
+            ...action.payload,
+        }
+    },
+    [fetchServices.rejected]: (state, action) => {
+        return {
             loading: false
         }
     },

@@ -5,11 +5,14 @@
     "php": ">=7.4",
     "ext-ctype": "*",
     "ext-iconv": "*",
+    "ext-json": "*",
     "composer/package-versions-deprecated": "^1.11",
     "doctrine/annotations": "^1.0",
     "doctrine/doctrine-bundle": "^2.1",
     "doctrine/doctrine-migrations-bundle": "^3.0",
     "doctrine/orm": "^2.7",
+    "jms/serializer-bundle": "^3.7",
+    "knplabs/knp-paginator-bundle": "^5.3",
     "nelmio/cors-bundle": "^2.1",
     "phpdocumentor/reflection-docblock": "^5.2",
     "ramsey/uuid": "^4.1",
@@ -42,8 +45,7 @@
     "symfony/webpack-encore-bundle": "^1.8",
     "symfony/yaml": "5.1.*",
     "twig/extra-bundle": "^2.12|^3.0",
-    "twig/twig": "^2.12|^3.0",
-    "ext-json": "*"
+    "twig/twig": "^2.12|^3.0"
   },
   "require-dev": {
     "symfony/browser-kit": "^5.1",
