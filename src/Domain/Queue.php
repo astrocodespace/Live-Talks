@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=QueueRepository::class)
- * @ORM\Table(name="queues")
+ * @ORM\Table(name="queues", schema="queues")
  */
 class Queue
 {
@@ -19,7 +19,17 @@ class Queue
      */
     private $id;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="QueueParticipation", mappedBy="queue")
+     */
     private ArrayCollection $participants;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Room", mappedBy="queue")
+     */
+    private $room;
 
     public function __construct()
     {

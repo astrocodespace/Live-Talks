@@ -47,11 +47,7 @@ class Service
     private $icon;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Room::class, mappedBy="services")
-     * @ORM\JoinTable(name="services_rooms",
-     *      joinColumns={@ORM\JoinColumn(name="room_uuid", referencedColumnName="uuid")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="service_uuid", referencedColumnName="uuid")}
-     * )
+     * @ORM\OneToMany(targetEntity=Room::class, mappedBy="service")
      * @JMS\Groups({"service_details"})
      * @JMS\Expose()
      */

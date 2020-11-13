@@ -36,6 +36,12 @@ class Room
      */
     private $services;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Queue", inversedBy="room")
+     * @ORM\JoinColumn(name="queue_id", referencedColumnName="id")
+     */
+    private $queue;
+
     public function __construct(UuidInterface $uuid)
     {
         $this->uuid = (string) $uuid;

@@ -2,7 +2,7 @@
 
 namespace App\Ui\Console;
 
-use App\Entity\Client;
+use App\Domain\Client;
 use App\Infrastructure\Repository\ClientRepository;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
