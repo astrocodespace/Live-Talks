@@ -41,18 +41,22 @@ const data = [
 
 export default createReducer(initialState, {
     [fetchServices.pending]: (state, action) => {
+        console.log('pending')
         return {
             ...state,
             loading: true
         }
     },
     [fetchServices.fulfilled]: (state, action) => {
+        console.log('fulfilled')
         return {
             ...state,
-            ...action.payload,
+            items: data,
+            loading: false // REMOVE AFTER API DATA
         }
     },
     [fetchServices.rejected]: (state, action) => {
+        console.log('rejected')
         return {
             loading: false
         }
