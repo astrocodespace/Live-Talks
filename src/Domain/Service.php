@@ -15,7 +15,7 @@ use Ramsey\Uuid\UuidInterface;
  * @ORM\Table(name="services")
  * @JMS\ExclusionPolicy("all")
  */
-class Service
+final class Service
 {
     /**
      * @ORM\Id

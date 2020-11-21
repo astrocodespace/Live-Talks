@@ -19,6 +19,7 @@ export default createReducer(initialState, {
 
     },
     [loginUser.rejected]: (state, action) => {
+        console.log(action);
         return {
             ...state,
             loading: false,

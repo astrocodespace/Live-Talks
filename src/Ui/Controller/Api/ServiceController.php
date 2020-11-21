@@ -2,7 +2,9 @@
 
 namespace App\Ui\Controller\Api;
 
+use App\Application\Command\Queue\JoinQueueCommand;
 use App\Application\Query\Service\Paginated;
+use App\Domain\Client;
 use App\Infrastructure\Repository\ServiceRepository;
 use App\Utils\PaginatedData;
 use JMS\Serializer\SerializationContext;
@@ -11,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -75,5 +79,25 @@ class ServiceController extends AbstractController
             [],
             true
         );
+    }
+
+    /**
+     * @param $serviceId
+     * @param MessageBusInterface $messageBus
+     *
+     * @return JsonResponse
+     * @Route("/{serviceId}/join", name="service_join_queue", methods={"POST"})
+     */
+    public function join($serviceId,
+                         MessageBusInterface $messageBus)
+    {
+        /** @var Client $client */
+        $client = $this->getUser();
+        $command = new JoinQueueCommand($client->getId(), $serviceId);
+        $envelope = $messageBus->dispatch($command);
+
+        $res = $envelope->last(HandledStamp::class);
+
+        return new JsonResponse($res);
     }
 }

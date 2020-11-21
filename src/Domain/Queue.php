@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass=QueueRepository::class)
  * @ORM\Table(name="queues", schema="queues")
  */
-class Queue
+final class Queue
 {
     /**
      * @ORM\Id
@@ -43,6 +43,7 @@ class Queue
 
     public function join(Client $client)
     {
+        $position = $this->participants->count() + 1;
         $this->participants->add(
             new QueueParticipation(
                 $this->participants->count() + 1,
@@ -50,6 +51,8 @@ class Queue
                 $this
             )
         );
+
+        return $position;
     }
 
     public function leave(QueueParticipation $participation)
@@ -59,5 +62,10 @@ class Queue
         }
 
         $this->participants->removeElement($participation);
+    }
+
+    public function length()
+    {
+        return $this->participants->count();
     }
 }

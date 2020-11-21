@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="queues_participations", schema="queues")
  * @ORM\Entity()
  */
-class QueueParticipation
+final class QueueParticipation
 {
     /**
      * @ORM\Id

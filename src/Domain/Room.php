@@ -15,7 +15,7 @@ use Ramsey\Uuid\UuidInterface;
  * @ORM\Table(name="rooms")
  * @JMS\ExclusionPolicy("all")
  */
-class Room
+final class Room
 {
     /**
      * @ORM\Id
@@ -75,5 +75,13 @@ class Room
         $this->services->removeElement($service);
 
         return $this;
+    }
+
+    /**
+     * @return Queue
+     */
+    public function getQueue(): ?Queue
+    {
+        return $this->queue;
     }
 }
