@@ -12,7 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller\Web
  *
  * @Route(host="office.%domain%")
- * @IsGranted("ROLE_EMPLOYEE")
  */
 class EmployeeZoneController extends AbstractController
 {
