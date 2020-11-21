@@ -19,6 +19,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('client', './assets/modules/client/index.js')
+    .addEntry('auth', './assets/modules/auth/index.js')
     //.addEntry('page1', './assets/page1.js')
     //.addEntry('page2', './assets/page2.js')
     .splitEntryChunks()

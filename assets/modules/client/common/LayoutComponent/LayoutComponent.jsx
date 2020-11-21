@@ -1,18 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {SLayout} from "./LayoutComponent.styled";
 import {SIconLink, SNav, SSidebarContainer, STitle} from "../SidebarComponent/SidebarComponent.styled";
 import {SAvatarBorder, SImage, SInnerBorder} from "../AvatarComponent/AvatarComponent.styled";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import colors from "../../theme/colors";
 import {SContent} from "../ContentComponent/ContentComponent.styled";
+import {LinkComponent} from "../SidebarComponent/LinkComponent";
+import {STabBarContainer} from "../TabBarComponent/TabBarComponent.styled";
 
 
 const LayoutComponent = ({children}) => {
+    const [isActive, setIsActive] = useState(false);
     return (
         <SLayout>
             <SSidebarContainer>
                 <div>
-                    <STitle>Twój urząd</STitle>
+                    <STitle>Your office</STitle>
                     <SAvatarBorder>
                         <SInnerBorder>
                             <SImage
@@ -21,17 +24,21 @@ const LayoutComponent = ({children}) => {
                     </SAvatarBorder>
                 </div>
                 <SNav>
-                    <SIconLink>
-                        <FontAwesomeIcon size={'lg'} color={colors.inactive} icon="home"/>
-                    </SIconLink>
-                    <SIconLink>
-                        <FontAwesomeIcon size={'lg'} color={colors.inactive} icon="user"/>
-                    </SIconLink>
-                    <SIconLink>
-                        <FontAwesomeIcon size={'lg'} color={true ? colors.primary : colors.inactive} icon="compass"/>
-                    </SIconLink>
+                    <LinkComponent
+                        icon={'home'}
+                        active={false}
+                    />
+                    <LinkComponent
+                        icon={'user'}
+                        active={false}
+                    />
+                    <LinkComponent
+                        icon={'compass'}
+                        active={true}
+                    />
                 </SNav>
             </SSidebarContainer>
+            <STabBarContainer/>
             <SContent>
                 {children}
             </SContent>

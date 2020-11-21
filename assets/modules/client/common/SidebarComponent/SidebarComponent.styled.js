@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import respondTo from "../../theme/respondTo";
 
 export const SSidebarContainer = styled.div`
     ${({ theme }) =>
@@ -8,7 +9,12 @@ export const SSidebarContainer = styled.div`
         top: 0;
         display: flex;
         flex-direction: column; 
-        background-color: ${theme.colors.sidebar};
+        background-color: ${theme.colors.primary};
+        left: -125px;
+        transition: left 0.3s;
+        ${respondTo.md`
+            left: 0;
+        `}
         width: 120px;
         height: 100%;
         align-items: center;
@@ -30,9 +36,12 @@ export const SNav = styled.div`
 export const SIconLink = styled.a`
     ${({ theme, active }) => 
     css`
-        color: ${theme.colors.inactive};
+        transition: all .2s;
+        border-radius: 10px;
         ${active && `
-            color: ${theme.colors.primary};
+            padding: 10px;
+            background-color: ${theme.colors.secondary};
+            border-radius: 100%;
         `
         }
         margin-bottom: 30px;
@@ -44,7 +53,7 @@ export const STitle = styled.h2`
     css`
         font-size: 16px;
         font-weight: bold;
-        color: ${theme.colors.primary};
+        color: ${theme.colors.white};
         margin-top: 20px;
     `}   
 `;
