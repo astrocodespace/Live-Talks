@@ -35,4 +35,41 @@ Kolejka:
 
 
 
+## Struktura projektu
 
+### Frontend
+
+Frontend aplikacji znajduje się w katalogu:
+
+```
+./frontend
+```
+
+Całość podzielona jest modułowo, w związku z czym każdą część można wydzielić jako oddzielną aplikację.
+
+W skład aplikacji wchodzić będą następujące moduły:
+
+* Admin - moduł Administratora: `./frontend/modules/admin`
+* Client - moduł Klienta: `./frontend/modules/client`
+* Employee - moduł pracownika `./frontend/modules/employee`
+* Auth - moduł autoryzacji `./frontend/modules/auth`
+
+W ramach MP1 został przygotowany ogólny layout:
+
+### Modułu klienta:
+
+Wersja desktop:
+![CLient Module UI](./.project/MP1_client.png)
+
+Wersja mobile (bez gotowych buttonów w tabbarze):
+![CLient Module UI](./.project/MP1_client_responsive.png)
+
+ORAZ
+
+### Część modułu pracownika:
+
+Wersja desktop:
+![Employee Module UI](./.project/MP1_employee.png)
+
+Wersja mobile:
+![Employee Module UI](./.project/MP1_employee_responsive.png)
